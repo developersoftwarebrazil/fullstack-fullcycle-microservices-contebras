@@ -5,7 +5,7 @@ package rabbitmq_test
 import (
 	"context"
 	"fmt"
-	"github.com/developersoftwarebrazil/fullstack-fullcycle-microservices-contebras/pkg/rabbitmq"
+	"imersaofc/pkg/rabbitmq"
 	"testing"
 	"time"
 

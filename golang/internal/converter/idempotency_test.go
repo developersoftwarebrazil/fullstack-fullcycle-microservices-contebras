@@ -6,7 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/developersoftwarebrazil/fullstack-fullcycle-microservices-contebras/internal/converter"
+	"imersaofc/internal/converter"
 	"testing"
 	"time"
 

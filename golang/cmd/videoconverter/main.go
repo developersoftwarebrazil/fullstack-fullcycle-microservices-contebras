@@ -10,10 +10,10 @@ import (
 	"sync"
 	"syscall"
 
-	"github.com/developersoftwarebrazil/fullstack-fullcycle-microservices-contebras/internal/converter"
+	"imersaofc/internal/converter"
+	"imersaofc/pkg/log"
+	"imersaofc/pkg/rabbitmq"
 
-	"github.com/developersoftwarebrazil/fullstack-fullcycle-microservices-contebras/pkg/log"
-	"github.com/developersoftwarebrazil/fullstack-fullcycle-microservices-contebras/pkg/rabbitmq"
 
 	_ "github.com/lib/pq"
 	"github.com/streadway/amqp"
@@ -81,10 +81,11 @@ func main() {
 	queueName := getEnvOrDefault("QUEUE_NAME", "video_conversion_queue")
 	conversionKey := getEnvOrDefault("CONVERSION_KEY", "conversion")
 	confirmationKey := getEnvOrDefault("CONFIRMATION_KEY", "finish-conversion")
-	rootPath := getEnvOrDefault("VIDEO_ROOT_PATH", "./media/uploads")
+	rootPath := getEnvOrDefault("VIDEO_ROOT_PATH", "/media/uploads")
 	confirmationQueue := "video_confirmation_queue" // Nome da fila de confirmação
 
 	videoConverter := converter.NewVideoConverter(rabbitClient, db, rootPath)
+
 
 	// Consumir mensagens da fila de conversão
 	msgs, err := rabbitClient.ConsumeMessages(conversionExch, conversionKey, queueName)
@@ -92,6 +93,7 @@ func main() {
 		slog.Error("Failed to consume messages", slog.String("error", err.Error()))
 		return
 	}
+
 
 	var wg sync.WaitGroup
 	go func() {

@@ -23,6 +23,5 @@
     "titleBar.inactiveBackground": "#007d9c99",
     "titleBar.inactiveForeground": "#e7e7e799"
   },
-  "peacock.remoteColor": "#007d9c",
-  "DockerRun.DisableDockerrc": true
+  "peacock.remoteColor": "#007d9c"
 }

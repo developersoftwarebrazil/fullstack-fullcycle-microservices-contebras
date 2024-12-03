@@ -13,7 +13,7 @@ import (
 	"sort"
 	"strconv"
 	"time"
-	"github.com/developersoftwarebrazil/fullstack-fullcycle-microservices-contebras/pkg/rabbitmq"
+	"imersaofc/pkg/rabbitmq"
 	"github.com/streadway/amqp"
 )
 
